@@ -1,0 +1,239 @@
+@url = http://localhost:5001/api/v1
+
+@accessToken =eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI5MWNiYTQ3Ny02OGQ3LTQxM2YtYTRmMS01OGNlOThhN2Y3ODUiLCJlbWFpbCI6Im1pa2VhbHdhbmdhOTdAZ21haWwuY29tIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzUzMjIwMzkzLCJleHAiOjE3NTMyMjEyOTN9.K-jHj1Lm59AY1f2SjHEvUSB-Tip8y8rxMR6BkdIsmZc
+@refreshToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkOWYzMWIwNS0xZGRhLTQ4YTctYjk2MC0zYTA4ODU2M2UxZTQiLCJlbWFpbCI6Im1rQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1MTQ1ODcxNCwiZXhwIjoxNzUyMDYzNTE0fQ.N-jbsLL0jgHA-2CqTxUyEJd6YPaqlQugazzGjfRILt4
+
+@customeraccessToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI0NDg5NmY0ZC1lNTVhLTQ1NGUtYTg2Yy1kYjVhNTU0ZjUyMDAiLCJlbWFpbCI6Im1pa2VAZ21haWwuY29tIiwicm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNzUxNDU3ODI5LCJleHAiOjE3NTE0NTg3Mjl9.qbV1R1oHXKBjyI6gGESKcUYvT7WoPQ7kjsZuP9Yr1SY
+@customerrefreshToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI0NDg5NmY0ZC1lNTVhLTQ1NGUtYTg2Yy1kYjVhNTU0ZjUyMDAiLCJlbWFpbCI6Im1pa2VAZ21haWwuY29tIiwicm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNzUxNDU3ODI5LCJleHAiOjE3NTIwNjI2Mjl9.f9OUVnFRO7iP0NgR45ZHmSIIA20GabizJrv6ByBBLFc
+###
+//admin
+POST {{ url}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "mikealwanga97@gmail.com",
+  "password": "password"
+}
+
+###
+//customer
+POST {{ url}}/auth/signin
+Content-Type: application/json
+
+{
+  "email": "mike@gmail.com",
+  "password": "password"
+}
+
+###
+//guest
+POST {{ url}}/auth/signin
+Content-Type: application/json
+
+{
+  "email": "mk@gmail.com",
+  "password": "password"
+}
+
+###
+GET  {{ url}}/auth/signout/44896f4d-e55a-454e-a86c-db5a554f5200
+Authorization: Bearer {{customeraccessToken}}
+
+
+###
+GET  {{ url}}/auth/refresh?id=d9f31b05-1dda-48a7-b960-3a088563e1e4
+Authorization: Bearer {{refreshToken}}
+
+
+###
+GET {{url}}/users
+Authorization: Bearer {{accessToken}}
+
+###
+GET {{url}}/drivers/locations
+Authorization: Bearer {{accessToken}}
+
+###
+GET {{url}}/users
+
+###
+GET {{url}}/users
+Authorization: Bearer {{customeraccessToken}}
+
+
+
+###
+POST {{url}}/users
+Content-Type: application/json
+
+{
+  "name": "Mike",
+  "last_name":"Kiprop",
+  "phone":"0733031821",
+  "email":"mikealwanga97@gmail.com",
+  "password":"password",
+  "role":"admin"
+}
+
+###
+GET {{url}}/users/d9f31b05-1dda-48a7-b960-3a088563e1e4
+
+###
+POST {{url}}/vehicles
+Content-Type: application/json
+Authorization: Bearer {{accessToken}}
+
+{
+  "licensePlate": "KCK 5067D",
+  "model":"Audi",
+  "capacity":3,
+  "type":"SUV",
+  "status":"Available"
+}
+
+###
+GET {{url}}/vehicles
+Authorization: Bearer {{accessToken}}
+
+###
+POST {{url}}/drivers
+Content-Type: application/json
+Authorization: Bearer {{accessToken}}
+
+{
+  "userId": "e2b54aff-84e9-48f1-9ec6-0a344953a914",
+  "licenseNumber":"Audi"
+}
+
+###
+POST {{url}}/drivers
+Content-Type: application/json
+Authorization: Bearer {{accessToken}}
+
+{
+  "userId": "12ce3d70-df2f-41a8-b340-90f6a769ab57",
+  "licenseNumber":"Audi",
+  "vehicleId": "a4e05a82-40b3-4eca-b22c-9930ba4578af"
+}
+
+
+###
+GET {{url}}/drivers
+Authorization: Bearer {{accessToken}}
+
+###
+DELETE {{url}}/drivers/546a804e-7d2e-4400-a50f-6ca1506635f8
+Authorization: Bearer {{accessToken}}
+
+
+###
+GET {{url}}/bookings
+Authorization: Bearer {{accessToken}}
+
+###
+POST {{url}}/bookings
+Content-Type: application/json
+Authorization: Bearer {{accessToken}}
+
+{
+  "customerId": "ece1e34d-1315-40ff-b511-d9ca8aabf7f2",
+  "vehicleId": "a4e05a82-40b3-4eca-b22c-9930ba4578af",
+  "type": "PrivateRide",
+  "pickupLocation": {
+    "latitude": 40.7128,
+    "longitude": -74.0060,
+    "address": "Kutus"
+  },
+  "dropoffLocation": {
+    "latitude": 40.7484,
+    "longitude": -73.9857,
+    "address": "Kerugoya"
+  },
+  "distance": 5.2,
+  "estimatedTime": 15
+}
+
+###
+POST {{url}}/notifications
+Content-Type: application/json
+Authorization: Bearer {{accessToken}}
+
+{
+  "userId": "ece1e34d-1315-40ff-b511-d9ca8aabf7f2",
+  "message": "Booking Confirmed",
+  "type": "BookingConfirmation"
+}
+
+###
+GET {{url}}/notifications
+Authorization: Bearer {{accessToken}}
+
+###
+POST {{url}}/payments
+Content-Type: application/json
+Authorization: Bearer {{accessToken}}
+
+{
+  "userId": "ece1e34d-1315-40ff-b511-d9ca8aabf7f2",
+  "bookingId":"7c51ba21-c527-427b-bc86-8be3ba67fe24",
+  "amount": 3000,
+  "method": "Mpesa",
+  "transactionId": "#TXDERD230K"
+}
+
+###
+GET {{url}}/payments
+Authorization: Bearer {{accessToken}}
+
+###
+GET {{url}}/routes
+Authorization: Bearer {{accessToken}}
+
+###
+POST {{url}}/routes
+Content-Type: application/json
+Authorization: Bearer {{accessToken}}
+
+{
+  "driverId": "da1b788c-c01d-4cd6-98df-b62ffa78d337",
+  "startLocation": {
+    "latitude": 40.7128,
+    "longitude": -74.0060,
+    "address": "Kutus"
+  },
+  "endLocation": {
+    "latitude": 40.7484,
+    "longitude": -73.9857,
+    "address": "Kerugoya"
+  },
+  "availableSeats": 2,
+  "departureTime": "21:00"
+}
+
+###
+POST {{url}}/reviews
+Content-Type: application/json
+Authorization: Bearer {{accessToken}}
+
+{
+  "driverId": "da1b788c-c01d-4cd6-98df-b62ffa78d337",
+  "bookingId": "7c51ba21-c527-427b-bc86-8be3ba67fe24",
+  "reviewerId": "ece1e34d-1315-40ff-b511-d9ca8aabf7f2",
+  "rating": 2
+}
+
+###
+GET {{url}}/reviews
+Authorization: Bearer {{accessToken}}
+
+
+###
+GET {{url}}/payments/driver/789e0123-e89b-12d3-a456-426614174000
+Authorization: Bearer {{accessToken}}
+
+
+
+
+
+
+
