@@ -36,7 +36,7 @@ export class UsersService {
     }
 
     const savedUser = await this.userRepository.save(newUser)
-    await this.mailService.sendRegistrationEmail(savedUser.email, savedUser.name);
+    // await this.mailService.sendRegistrationEmail(savedUser.email, savedUser.name);
     return savedUser;
   }
 

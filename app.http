@@ -1,6 +1,6 @@
 @url = http://localhost:5001/api/v1
 
-@accessToken =eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI5MWNiYTQ3Ny02OGQ3LTQxM2YtYTRmMS01OGNlOThhN2Y3ODUiLCJlbWFpbCI6Im1pa2VhbHdhbmdhOTdAZ21haWwuY29tIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzUzMjIwMzkzLCJleHAiOjE3NTMyMjEyOTN9.K-jHj1Lm59AY1f2SjHEvUSB-Tip8y8rxMR6BkdIsmZc
+@accessToken =eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI5MWNiYTQ3Ny02OGQ3LTQxM2YtYTRmMS01OGNlOThhN2Y3ODUiLCJlbWFpbCI6Im1pa2VhbHdhbmdhOTdAZ21haWwuY29tIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzUzMzkyMTY1LCJleHAiOjE3NTMzOTMwNjV9.2-y-wiEXcHzu43nGkFTI1XLrmRpTUDyK-iDTJ6P5z_E
 @refreshToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkOWYzMWIwNS0xZGRhLTQ4YTctYjk2MC0zYTA4ODU2M2UxZTQiLCJlbWFpbCI6Im1rQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1MTQ1ODcxNCwiZXhwIjoxNzUyMDYzNTE0fQ.N-jbsLL0jgHA-2CqTxUyEJd6YPaqlQugazzGjfRILt4
 
 @customeraccessToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI0NDg5NmY0ZC1lNTVhLTQ1NGUtYTg2Yy1kYjVhNTU0ZjUyMDAiLCJlbWFpbCI6Im1pa2VAZ21haWwuY29tIiwicm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNzUxNDU3ODI5LCJleHAiOjE3NTE0NTg3Mjl9.qbV1R1oHXKBjyI6gGESKcUYvT7WoPQ7kjsZuP9Yr1SY
@@ -50,6 +50,10 @@ GET {{url}}/users
 Authorization: Bearer {{accessToken}}
 
 ###
+GET {{url}}/chatbot/models
+Authorization: Bearer {{accessToken}}
+
+###
 GET {{url}}/drivers/locations
 Authorization: Bearer {{accessToken}}
 
@@ -67,10 +71,10 @@ POST {{url}}/users
 Content-Type: application/json
 
 {
-  "name": "Mike",
-  "last_name":"Kiprop",
+  "name": "Tevas",
+  "last_name":"J",
   "phone":"0733031821",
-  "email":"mikealwanga97@gmail.com",
+  "email":"T97@gmail.com",
   "password":"password",
   "role":"admin"
 }

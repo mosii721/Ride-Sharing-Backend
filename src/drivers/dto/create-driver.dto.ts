@@ -46,6 +46,7 @@ export class CreateDriverDto {
     required: false
   })
     @IsBoolean()
+    @IsOptional()
     available: boolean;
 }
 

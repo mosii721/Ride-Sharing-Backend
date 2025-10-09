@@ -81,7 +81,7 @@ export class AuthService {
     )
 
     await this.saveRefreshToken(foundUser.id, refreshToken)
-    await this.mailService.sendLoginEmail(foundUser.email,foundUser.name);
+    // await this.mailService.sendLoginEmail(foundUser.email,foundUser.name);
 
     return { data:{tokens:{accessToken,refreshToken},
       user:{

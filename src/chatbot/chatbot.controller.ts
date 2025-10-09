@@ -1,4 +1,4 @@
-import { Controller, Post, Body, UseGuards } from '@nestjs/common';
+import { Controller, Post, Body, UseGuards, Get } from '@nestjs/common';
 import { ChatbotService } from './chatbot.service';
 import { CreateChatbotDto } from './dto/create-chatbot.dto';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
@@ -19,4 +19,5 @@ export class ChatbotController {
   handleMessage(@Body() chatMessageDto: CreateChatbotDto) {
     return this.chatbotService.handleChat(chatMessageDto);
   }
+
 }

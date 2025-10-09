@@ -235,10 +235,12 @@ async getRouteInfo(pickup: { latitude: number, longitude: number }, dropoff: { l
       );
 
       const summary = response.data.routes[0].summary; 
+      const route = response.data.routes[0];
 
       return {
         distance: +(summary.distance / 1000).toFixed(2), // in kilometers
-        estimatedTime: +(summary.duration / 60).toFixed(2), // in minutes
+        estimatedTime: +(summary.duration / 60).toFixed(2),
+        geometry: route.geometry,  // in minutes
       };
   
   }
