@@ -7,7 +7,7 @@ import { RoutesModule } from './routes/routes.module';
 import { PaymentsModule } from './payments/payments.module';
 import { ReviewsModule } from './reviews/reviews.module';
 import { NotificationsModule } from './notifications/notifications.module';
-import { LogsModule } from './logs/logs.module';
+// import { LogsModule } from './logs/logs.module';
 import { DatabaseModule } from './database/database.module';
 import { AuthModule } from './auth/auth.module';
 import { ConfigModule } from '@nestjs/config';
@@ -30,7 +30,7 @@ import { MailModule } from './mail/mail.module';
     PaymentsModule,
     ReviewsModule,
     NotificationsModule,
-    LogsModule,
+    // LogsModule,
     DatabaseModule,
     AuthModule,
     ThrottlerModule.forRoot({
