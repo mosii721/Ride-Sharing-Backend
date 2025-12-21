@@ -72,7 +72,9 @@ async function bootstrap() {
     `,
     customSiteTitle: 'Documentacion de la API del Montar Sharing'
     });
-
+// await app.listen(PORT,'0.0.0.0', ()  =>{
+//     console.log(`server is  running on http://localhost:${PORT}`);
+//   });
   await app.listen(PORT, '0.0.0.0');
   console.log(`🚀 Ride-sharing backend is running on port ${PORT}`);
 }
