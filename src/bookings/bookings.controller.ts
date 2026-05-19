@@ -1,6 +1,6 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards, Query } from '@nestjs/common';
 import { BookingsService } from './bookings.service';
-import { CreateBookingDto } from './dto/create-booking.dto';
+import { CreateBookingDto, RouteInfoDto } from './dto/create-booking.dto';
 import { UpdateBookingDto } from './dto/update-booking.dto';
 import { RolesGuard } from 'src/auth/guards';
 import { HttpService } from '@nestjs/axios';
@@ -66,7 +66,7 @@ updateStatus(@Param('id') id: string, @Body() body: { status: BookingStatus }) {
 
   
   @Post('route-info')
-  async getRouteInfo(@Body() body: {pickup: { latitude: number; longitude: number; address: string },dropoff: { latitude: number; longitude: number; address: string }}) {
-    return this.bookingsService.getRouteInfo(body.pickup, body.dropoff);
+  async getRouteInfo(@Body() routeInfoDto: RouteInfoDto) {
+    return this.bookingsService.getRouteInfo(routeInfoDto.pickup, routeInfoDto.dropoff);
   }
 }

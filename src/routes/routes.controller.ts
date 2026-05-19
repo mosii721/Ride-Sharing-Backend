@@ -51,7 +51,7 @@ export class RoutesController {
 
   @Roles(Role.ADMIN,Role.DRIVER)
   @Patch(':id/status')
-  updateStatus(@Param('id') id: string, @Body() body: { status: RouteStatus }) {
-    return this.routesService.updateStatus(id, body.status);
+  updateStatus(@Param('id') id: string, @Body('status') status: RouteStatus) {
+    return this.routesService.updateStatus(id, status);
   }
 }

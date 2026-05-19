@@ -99,6 +99,18 @@ export class CreateBookingDto {
     status: BookingStatus=BookingStatus.PENDING;
 }
 
+export class RouteInfoDto {
+    @IsObject()
+    @ValidateNested()
+    @Type(() => LocationDto)
+    pickup: LocationDto;
+
+    @IsObject()
+    @ValidateNested()
+    @Type(() => LocationDto)
+    dropoff: LocationDto;
+}
+
 
 
 

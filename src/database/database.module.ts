@@ -4,10 +4,10 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 
 @Module({
     imports: [
-        ConfigModule,
+        ConfigModule, // Not neccessary here since configModule is global in app.module but added for clarity
         TypeOrmModule.forRootAsync({
-            imports: [ConfigModule],
-            useFactory: async (configService: ConfigService) => ({
+            imports: [ConfigModule], // Not neccessary here since configModule is global in app.module but added for clarity
+            useFactory: async (configService: ConfigService) => ({ 
                 type: 'postgres',
                 url: configService.getOrThrow<string>('DATABASE_URL'),
                 ssl: { rejectUnauthorized: false }, // Required for Neon
@@ -16,7 +16,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
                 logging: configService.get<boolean>('DB_LOGGING', false),
                 migrations: [__dirname + '/migrations/**/*{.ts,.js}'],
             }),
-            inject: [ConfigService],
+            inject: [ConfigService], // Inject ConfigService to access environment variables
         }),
     ],
     providers: [],
